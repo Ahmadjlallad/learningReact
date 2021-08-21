@@ -6,7 +6,7 @@ const Comment = (props) => {
   // * we need props to pass data to component
   console.log(props);
   // * all variables are passed to component is saved in props as a JS object
-  // console.log(arguments);
+  // console.log(arguments); LearningProps
   return (
     <div className="comment">
       <a href="/" className="avatar">
