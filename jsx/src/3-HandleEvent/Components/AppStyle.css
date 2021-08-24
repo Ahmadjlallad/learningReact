@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap");
+.headText,
+.time {
+  font-family: "Libre Baskerville", serif;
+}
+form {
+  height: 11rem;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-align: center;
+  justify-content: space-around;
+  align-items: center;
+}
+body {
+  background-color: #1f2022;
+}
+.segment {
+  box-shadow: rgb(100 100 111 / 20%) 20px 6px 29px 20px !important;
+}

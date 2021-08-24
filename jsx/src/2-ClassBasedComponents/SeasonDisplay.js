@@ -1,5 +1,7 @@
 import React from "react";
 import SeasonRender from "./SeasonRender.js";
+import Spinner from "./LoaderSpinner.js";
+import Clock from "../time/TimeClass";
 // GeoLocationAsync();
 // NOTE: I created this function but the instructor did the class approach
 
@@ -56,7 +58,6 @@ const App = class extends React.Component {
     super(props);
     // NOTE // ! initialize state
 
-    // this.render();
   }*/
   // NOTE // ! we must have to have render method
   /*//////////////////component life cycle methods///////////////////////*/
@@ -69,7 +70,6 @@ const App = class extends React.Component {
 
   componentDidMount() {
     this.getGeoLocation();
-
     //  * componentDidMount() {} is better for data fetching or loading
   }
   componentDidUpdate() {}
@@ -83,12 +83,20 @@ const App = class extends React.Component {
       (rejects) => this.setState({ errMessene: rejects.message })
     );
   }
-  render() {
+  renderContent() {
+    console.log(this.state.lat);
     if (!this.state.errMessene && this.state.lat)
-      return <SeasonRender lat={this.state.lat} />;
+      return (
+        <SeasonRender lat={this.state.lat}>
+          <Clock />
+        </SeasonRender>
+      );
     if (this.state.errMessene && !this.state.lat)
       return <div className="text container">{this.state.errMessene}</div>;
-    return <div className="text container">{"Loading"}</div>;
+    return <Spinner message="Please accept location request" />;
+  }
+  render() {
+    return <div className="border red">{this.renderContent()}</div>;
   }
 };
 export default App;
